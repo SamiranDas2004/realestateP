@@ -88,6 +88,7 @@ function Footer() {
             </ul>
           </div>
 
+
           {/* Our Gallery Section */}
           <div>
             <h3 className="font-bold text-xl mb-5">OUR GALLERY</h3>
