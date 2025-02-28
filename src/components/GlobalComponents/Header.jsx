@@ -70,7 +70,7 @@ function Header() {
               >
                 <Link to="/" className="text-xl flex items-center">
                   Home
-                  <span className="ml-1">▼</span>
+          
                 </Link>
                 {hoveredLink === "home" && (
                   <ul className="absolute bg-white text-gray-800 shadow-lg mt-2 py-2 w-48 rounded z-10 transition-all duration-300">
@@ -95,30 +95,32 @@ function Header() {
               </li>
 
               {/* Dropdown for Projects */}
-              <li
-                onMouseEnter={() => handleMouseEnter("projects")}
-                onMouseLeave={handleMouseLeave}
-                className="relative group"
-              >
-                <Link to="/projects" className="text-xl flex items-center">
-                  Projects
-                  <span className="ml-1">▼</span>
-                </Link>
-                {hoveredLink === "projects" && (
-                  <ul className="absolute bg-white text-gray-800 shadow-lg mt-2 py-2 w-48 rounded z-10 transition-all duration-300">
-                    {dropdownLinks.projects.map((link, index) => (
-                      <li key={index}>
-                        <Link
-                          to={link.path}
-                          className="block px-4 py-2 hover:bg-gray-100 transition"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
+            {/* Dropdown for Projects */}
+<li
+  onMouseEnter={() => handleMouseEnter("projects")}
+  onMouseLeave={handleMouseLeave}
+  className="relative group"
+>
+  <Link to="/projects" className="text-xl flex items-center">
+    Projects
+
+  </Link>
+  {hoveredLink === "projects" && (
+    <ul className="absolute bg-white text-gray-800 shadow-lg mt-2 py-2 w-48 rounded z-10 transition-all duration-300">
+      {dropdownLinks.projects.map((link, index) => (
+        <li key={index}>
+          <Link
+            to={link.path}
+            className="block px-4 py-2 hover:bg-gray-100 transition"
+          >
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )}
+</li>
+
 
               <li>
                 <Link to="/elements" className="text-xl">
