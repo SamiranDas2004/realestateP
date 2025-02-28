@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
 function AwardsSection() {
   const clientLogos = [
@@ -27,11 +28,19 @@ function AwardsSection() {
         {/* Logos Section */}
         <div className="flex justify-center items-center flex-wrap gap-10 mb-12">
           {clientLogos.map((logo, index) => (
-            <img
+            <motion.img
               key={index}
               src={logo}
               alt={`Client Logo ${index + 1}`}
               className="h-20 w-auto object-contain"
+              animate={{
+                y: [0, -10, 0], // Moves up and down
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
           ))}
         </div>

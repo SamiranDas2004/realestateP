@@ -11,7 +11,7 @@ function About() {
       {/* Content Wrapper */}
       <div className="relative z-10 flex flex-col items-center w-full px-6">
         {/* Content Box */}
-        <div className="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl max-w-3xl text-center transform transition-all hover:scale-105 duration-300">
+        <div className="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl max-w-3xl text-center transform transition-all hover:scale-105 duration-500 ease-in-out">
           {/* Logo */}
           <div className="mb-5 flex justify-center">
             <div className="w-12 h-12 bg-[#3da561] rounded-full flex items-center justify-center shadow-md">
@@ -35,11 +35,26 @@ function About() {
           </p>
 
           {/* About Us Button */}
-          <button className="bg-[#3da561] hover:bg-[#2e8a4d] text-white py-3 px-8 rounded-lg font-semibold text-lg shadow-md transition-all duration-300 transform hover:scale-105">
+          <button className="bg-[#3da561] hover:bg-[#2e8a4d] text-white py-3 px-8 rounded-lg font-semibold text-lg shadow-md transition-transform duration-500 ease-in-out transform hover:scale-110 floating-button">
             ABOUT US →
           </button>
         </div>
       </div>
+
+      {/* Floating Button Animation */}
+      <style>
+        {`
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+          }
+
+          .floating-button {
+            animation: float 3s ease-in-out infinite;
+          }
+        `}
+      </style>
     </div>
   );
 }

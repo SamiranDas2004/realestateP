@@ -27,7 +27,7 @@ function HeroSection() {
 
   return (
     <div className="relative w-full overflow-hidden bg-[#0e1b36]">
-      <div className="flex flex-col md:flex-row min-h-[550px] md:h-[80vh] min-h-[80vh] md:min-h-0">
+      <div className="flex flex-col md:flex-row min-h-[550px] md:h-[80vh] min-h-[90vh] md:min-h-0">
         <div className="w-full md:w-1/2 flex flex-col justify-center px-6 md:pl-16 md:pr-8 py-14 md:py-0">
           <div className={`transition-all duration-1000 ease-in-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className={`transform transition-all duration-1000 ease-in-out ${contentVisible ? 'translate-y-0' : '-translate-y-full'}`}>
@@ -67,9 +67,9 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="hidden md:flex justify-center mt-8">
+          <div className="hidden md:flex justify-center mt-8 floating-button">
             <button
-              className="w-10 h-10 rounded-full border border-white text-white flex items-center justify-center hover:bg-white/10 transition-colors mr-4"
+              className="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center hover:bg-white/10 transition-colors mr-4"
               onClick={() => changeImage('prev')}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -77,7 +77,7 @@ function HeroSection() {
               </svg>
             </button>
             <button
-              className="w-10 h-10 rounded-full border border-white text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+              className="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center hover:bg-white/10 transition-colors"
               onClick={() => changeImage('next')}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -95,6 +95,20 @@ function HeroSection() {
           />
         </div>
       </div>
+       {/* Floating Button Animation */}
+       <style>
+        {`
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+          }
+
+          .floating-button {
+            animation: float 3s ease-in-out infinite;
+          }
+        `}
+      </style>
     </div>
   );
 }

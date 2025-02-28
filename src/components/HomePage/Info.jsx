@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function Info() {
   // Initializing state for the stats counters
@@ -25,26 +26,42 @@ function Info() {
     animateCounter(setApartmentsSold, 790);
   }, []);
 
+  // Floating animation for numbers
+  const floatAnimation = {
+    y: [0, -10, 0], // Moves up and down
+    transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+  };
+
   return (
     <div className="relative w-full py-20 bg-[#0e1b36] text-white overflow-hidden">
       {/* Background pattern with darker overlay */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url('https://azim.commonsupport.com/Amortez/assets/images/shape/shape-5.png')",
+          backgroundImage:
+            "url('https://azim.commonsupport.com/Amortez/assets/images/shape/shape-5.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundColor: 'rgba(0, 0, 0, 0.3)', // Add a semi-transparent black overlay
-          backgroundBlendMode: 'multiply', // Blend the overlay with the image
+          backgroundColor: "rgba(0, 0, 0, 0.3)", // Add a semi-transparent black overlay
+          backgroundBlendMode: "multiply", // Blend the overlay with the image
         }}
       />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Logo icon */}
         <div className="flex justify-center mb-6">
-          <svg className="w-12 h-8 text-green-500" viewBox="0 0 24 16" fill="currentColor">
+          <svg
+            className="w-12 h-8 text-green-500"
+            viewBox="0 0 24 16"
+            fill="currentColor"
+          >
             <path d="M12 0L24 16H0L12 0Z" />
-            <path d="M6 8L12 2L18 8V16H6V8Z" fill="none" stroke="currentColor" strokeWidth="1" />
+            <path
+              d="M6 8L12 2L18 8V16H6V8Z"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
           </svg>
         </div>
 
@@ -57,34 +74,51 @@ function Info() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24 max-w-6xl mx-auto">
           <div>
             <p className="text-lg leading-relaxed">
-              Incididunt enim laboreat dolore magna aliqua. Ut sed enim miniya veniam nostrud nasts exercitation ullamco laboris nisiut aliquip dui consequat. Duis irure dolor in reprehenderit in voluptate velit esse cillum.
+              Incididunt enim laboreat dolore magna aliqua. Ut sed enim miniya
+              veniam nostrud nasts exercitation ullamco laboris nisiut aliquip
+              dui consequat. Duis irure dolor in reprehenderit in voluptate
+              velit esse cillum.
             </p>
           </div>
           <div>
             <p className="text-lg leading-relaxed">
-              Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur anim laborum. Sed ut perspiciatis und omnis iste natus eror sit holuptatem ipsum accusantium dolor mque laudantium.
+              Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur anim laborum. Sed ut perspiciatis und omnis iste natus
+              eror sit holuptatem ipsum accusantium dolor mque laudantium.
             </p>
 
-            {/* Stats section with margin-bottom */}
+            {/* Stats section with floating effect */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ml-auto mt-8">
               <div className="text-center">
-                <h3 className="text-7xl font-bold text-green-500 mb-4 transition-all duration-500">
-                  {totalConstructions}<span className="text-green-500 text-6xl">+</span>
-                </h3>
+                <motion.h3
+                  className="text-7xl font-bold text-green-500 mb-4"
+                  animate={floatAnimation}
+                >
+                  {totalConstructions}
+                  <span className="text-green-500 text-6xl">+</span>
+                </motion.h3>
                 <p className="text-xl">Total Constructions</p>
               </div>
 
               <div className="text-center">
-                <h3 className="text-7xl font-bold text-green-500 mb-4 transition-all duration-500">
-                  {totalAmenities}<span className="text-green-500 text-6xl">+</span>
-                </h3>
+                <motion.h3
+                  className="text-7xl font-bold text-green-500 mb-4"
+                  animate={floatAnimation}
+                >
+                  {totalAmenities}
+                  <span className="text-green-500 text-6xl">+</span>
+                </motion.h3>
                 <p className="text-xl">Total Amenities</p>
               </div>
 
               <div className="text-center">
-                <h3 className="text-7xl font-bold text-green-500 mb-4 transition-all duration-500">
-                  {apartmentsSold}<span className="text-green-500 text-6xl">+</span>
-                </h3>
+                <motion.h3
+                  className="text-7xl font-bold text-green-500 mb-4"
+                  animate={floatAnimation}
+                >
+                  {apartmentsSold}
+                  <span className="text-green-500 text-6xl">+</span>
+                </motion.h3>
                 <p className="text-xl">Apartments Sold</p>
               </div>
             </div>

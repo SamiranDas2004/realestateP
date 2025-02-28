@@ -1,1 +1,18 @@
 @import "tailwindcss";
+@layer components {
+    .btn {
+      @apply py-3 px-6 inline-flex items-center justify-center rounded-md font-semibold transition-all duration-300;
+    }
+  
+    .btn-primary {
+      @apply bg-[#3da561] text-white hover:bg-gray-700 hover:scale-105;
+    }
+  
+    .btn-secondary {
+      @apply bg-green-600 text-white hover:bg-green-500 hover:scale-105;
+    }
+  
+    .btn-outline {
+      @apply border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white hover:scale-105;
+    }
+  }
