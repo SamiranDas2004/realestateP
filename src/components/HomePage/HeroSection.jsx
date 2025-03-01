@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 function HeroSection() {
   const [contentVisible, setContentVisible] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const images = [
     "https://azim.commonsupport.com/Amortez/assets/images/banner/banner-5.png",
@@ -10,20 +11,28 @@ function HeroSection() {
   ];
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setContentVisible(prev => !prev);
-    }, 3000);
+    const contentInterval = setInterval(() => {
+      // First, fade out the content
+      setContentVisible(false);
+      
+      // Then start image transition
+      setTimeout(() => {
+        setIsTransitioning(true);
+        
+        // After transition starts, update the image index and reset states
+        setTimeout(() => {
+          setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+          setIsTransitioning(false);
+          setContentVisible(true);
+        }, 1000); // Match the image transition duration
+      }, 1000); // Wait for content to fade out
+    }, 5000); // Longer interval for better user experience
 
-    return () => clearInterval(intervalId);
-  }, []);
+    return () => clearInterval(contentInterval);
+  }, [images.length]);
 
-  const changeImage = (direction) => {
-    if (direction === 'next') {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    } else {
-      setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    }
-  };
+  // Calculate the next image index
+  const nextImageIndex = (currentImageIndex + 1) % images.length;
 
   return (
     <div className="relative w-full overflow-hidden bg-[#0e1b36]">
@@ -34,9 +43,9 @@ function HeroSection() {
               <div className="flex items-center mb-5 md:mb-4">
                 <div className="text-green-500 mr-3">
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 22L10 15L17 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M3 15L10 8L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M3 8L10 1L17 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M3 22L10 15L17 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M3 15L10 8L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M3 8L10 1L17 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <p className="text-white text-sm">Premium Architectures Lifestyle</p>
@@ -66,37 +75,35 @@ function HeroSection() {
               </div>
             </div>
           </div>
-
-          <div className="hidden md:flex justify-center mt-8 floating-button">
-            <button
-              className="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center hover:bg-white/10 transition-colors mr-4"
-              onClick={() => changeImage('prev')}
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2" />
-              </svg>
-            </button>
-            <button
-              className="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center hover:bg-white/10 transition-colors"
-              onClick={() => changeImage('next')}
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" />
-              </svg>
-            </button>
-          </div>
         </div>
 
         <div className="hidden lg:block w-1/2 relative h-full">
-          <img
-            src={images[currentImageIndex]}
-            alt="Modern city view"
-            className="absolute inset-0 w-full h-full object-cover"
+          {/* Current image */}
+          <div 
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage: `url(${images[currentImageIndex]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: isTransitioning ? 0 : 1,
+              transition: 'opacity 1500ms ease-in-out'
+            }}
+          />
+          
+          {/* Next image (only visible during transition) */}
+          <div 
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage: `url(${images[nextImageIndex]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: isTransitioning ? 1 : 0,
+              transition: 'opacity 1500ms ease-in-out'
+            }}
           />
         </div>
       </div>
-       {/* Floating Button Animation */}
-       <style>
+      <style>
         {`
           @keyframes float {
             0% { transform: translateY(0px); }

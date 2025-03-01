@@ -5,7 +5,7 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
   const menuRef = useRef(null);
-
+  const menuButtonRef = useRef(null);
 
   const handleMouseEnter = (link) => setHoveredLink(link);
   const handleMouseLeave = () => setHoveredLink(null);
@@ -14,7 +14,11 @@ function Header() {
   // Close menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (
+        menuRef.current && 
+        !menuRef.current.contains(event.target) &&
+        !menuButtonRef.current.contains(event.target)
+      ) {
         setIsMenuOpen(false);
       }
     }
@@ -51,6 +55,7 @@ function Header() {
           {/* Hamburger Menu (Mobile) */}
           <div className="lg:hidden z-20">
             <button
+              ref={menuButtonRef}
               onClick={toggleMenu}
               className="focus:outline-none p-2 rounded-md hover:bg-[#1a2a4e] transition-colors"
               aria-label="Toggle menu"
@@ -70,7 +75,6 @@ function Header() {
               >
                 <Link to="/" className="text-xl flex items-center">
                   Home
-          
                 </Link>
                 {hoveredLink === "home" && (
                   <ul className="absolute bg-white text-gray-800 shadow-lg mt-2 py-2 w-48 rounded z-10 transition-all duration-300">
@@ -95,32 +99,29 @@ function Header() {
               </li>
 
               {/* Dropdown for Projects */}
-            {/* Dropdown for Projects */}
-<li
-  onMouseEnter={() => handleMouseEnter("projects")}
-  onMouseLeave={handleMouseLeave}
-  className="relative group"
->
-  <Link to="/projects" className="text-xl flex items-center">
-    Projects
-
-  </Link>
-  {hoveredLink === "projects" && (
-    <ul className="absolute bg-white text-gray-800 shadow-lg mt-2 py-2 w-48 rounded z-10 transition-all duration-300">
-      {dropdownLinks.projects.map((link, index) => (
-        <li key={index}>
-          <Link
-            to={link.path}
-            className="block px-4 py-2 hover:bg-gray-100 transition"
-          >
-            {link.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  )}
-</li>
-
+              <li
+                onMouseEnter={() => handleMouseEnter("projects")}
+                onMouseLeave={handleMouseLeave}
+                className="relative group"
+              >
+                <Link to="/projects" className="text-xl flex items-center">
+                  Projects
+                </Link>
+                {hoveredLink === "projects" && (
+                  <ul className="absolute bg-white text-gray-800 shadow-lg mt-2 py-2 w-48 rounded z-10 transition-all duration-300">
+                    {dropdownLinks.projects.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          to={link.path}
+                          className="block px-4 py-2 hover:bg-gray-100 transition"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
 
               <li>
                 <Link to="/elements" className="text-xl">
@@ -143,7 +144,20 @@ function Header() {
           {/* Contact Info */}
           <div className="hidden lg:flex items-center">
             <div className="rounded-full bg-[#29ac4a] p-3 mr-4">
-              📞
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
             </div>
             <div>
               <div className="text-lg">Start a New Project</div>
@@ -175,7 +189,11 @@ function Header() {
                 <ul className="mt-3 pl-4 border-l-2 border-[#29ac4a]">
                   {dropdownLinks.home.map((link, index) => (
                     <li key={index}>
-                      <Link to={link.path} className="block py-2">
+                      <Link 
+                        to={link.path} 
+                        className="block py-2"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                         {link.name}
                       </Link>
                     </li>
@@ -184,32 +202,68 @@ function Header() {
               )}
             </li>
 
-            <li>
-              <Link to="/about" className="text-xl">
+            <li className="border-b border-gray-700 pb-3">
+              <Link 
+                to="/about" 
+                className="text-xl"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 About
               </Link>
             </li>
 
-            <li>
-              <Link to="/projects" className="text-xl">
-                Projects
-              </Link>
+            <li className="border-b border-gray-700 pb-3">
+              <div className="flex justify-between items-center">
+                <Link to="/projects" className="text-xl font-medium">
+                  Projects
+                </Link>
+                <button onClick={() => setHoveredLink(hoveredLink === "projects" ? null : "projects")}>
+                  {hoveredLink === "projects" ? "▲" : "▼"}
+                </button>
+              </div>
+              {hoveredLink === "projects" && (
+                <ul className="mt-3 pl-4 border-l-2 border-[#29ac4a]">
+                  {dropdownLinks.projects.map((link, index) => (
+                    <li key={index}>
+                      <Link 
+                        to={link.path} 
+                        className="block py-2"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
 
-            <li>
-              <Link to="/elements" className="text-xl">
+            <li className="border-b border-gray-700 pb-3">
+              <Link 
+                to="/elements" 
+                className="text-xl"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Elements
               </Link>
             </li>
 
-            <li>
-              <Link to="/blog" className="text-xl">
+            <li className="border-b border-gray-700 pb-3">
+              <Link 
+                to="/blog" 
+                className="text-xl"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Blog
               </Link>
             </li>
 
             <li>
-              <Link to="/contact" className="text-xl">
+              <Link 
+                to="/contact" 
+                className="text-xl"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Contact
               </Link>
             </li>

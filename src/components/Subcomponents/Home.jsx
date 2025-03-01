@@ -52,9 +52,7 @@ function Home() {
     <>
       <div className="relative">
         {/* <TopHeader /> */}
-        <div className={`w-full z-40 ${isHeaderSticky ? 'fixed top-0 shadow-md bg-white' : ''}`}>
-          <Header />
-        </div>
+       
         {/* Add padding when header becomes sticky to prevent content jump */}
         {isHeaderSticky && <div className="header-placeholder" style={{ height: '80px' }}></div>}
       </div>
