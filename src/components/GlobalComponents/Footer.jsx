@@ -57,7 +57,7 @@ function Footer() {
               <FaPhone className="mr-3 text-gray-400" />
               <p className="text-base">1800-222-155</p>
             </div>
-            <button className="bg-[#3da561] text-white py-3 px-5 rounded-md mt-4 text-lg font-semibold">
+            <button className="btn btn-primary">
               Start a New Project
             </button>
           </div>

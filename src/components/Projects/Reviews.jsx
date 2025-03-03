@@ -38,7 +38,7 @@ function Reviews() {
 
   return (
     <div
-      className="relative py-24 md:py-32" // Increased padding
+      className="relative py-16 sm:py-20 md:py-32 px-4 sm:px-6 md:px-8"
       style={{
         backgroundImage: 'url(https://azim.commonsupport.com/Amortez/assets/images/background/testimonial-bg.jpg)',
         backgroundSize: 'cover',
@@ -48,30 +48,30 @@ function Reviews() {
       }}
     >
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-10"> {/* Increased font size and margin */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 sm:mb-10">
           WHAT OUR CUSTOMERS ARE SAYING
         </h2>
         <Slider {...settings}>
           {reviews.map((review, index) => (
-            <div key={index} className="max-w-4xl mx-auto"> {/* Increased max width */}
-              <div className="bg-white bg-opacity-10 rounded-xl p-10 relative"> {/* Increased padding and rounded corners */}
-                <div className="text-5xl text-yellow-500 absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
+            <div key={index} className="max-w-3xl mx-auto sm:max-w-4xl">
+              <div className="bg-white bg-opacity-10 rounded-xl p-6 sm:p-8 md:p-10 relative">
+                <div className="text-4xl sm:text-5xl text-yellow-500 absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
                   "
                 </div>
-                <p className="text-gray-900 text-xl md:text-2xl mb-8"> {/* Increased font size and margin */}
+                <p className="text-gray-900 text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8">
                   {review.text}
                 </p>
                 <div className="flex items-center justify-center">
                   <img
                     src={review.image}
                     alt={review.author}
-                    className="rounded-full w-16 h-16 mr-6" // Increased image size and margin
+                    className="rounded-full w-14 h-14 sm:w-16 sm:h-16 mr-4 sm:mr-6"
                   />
                   <div>
-                    <h3 className="text-gray-900 text-lg md:text-xl font-semibold"> {/* Increased font size */}
+                    <h3 className="text-gray-900 text-md sm:text-lg md:text-xl font-semibold">
                       {review.author}
                     </h3>
-                    <p className="text-gray-500 text-sm md:text-base"> {/* Increased font size */}
+                    <p className="text-gray-500 text-sm sm:text-base">
                       {review.role}
                     </p>
                   </div>

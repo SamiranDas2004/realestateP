@@ -9,7 +9,7 @@ function About() {
       </div>
 
       {/* Content Wrapper */}
-      <div className="relative z-10 flex flex-col items-center w-full px-6">
+      <div className="relative z-10 flex flex-col items-center w-full px-6 py-12 md:py-0"> 
         {/* Content Box */}
         <div className="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl max-w-3xl text-center transform transition-all hover:scale-105 duration-500 ease-in-out">
           {/* Logo */}

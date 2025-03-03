@@ -15,7 +15,7 @@ function Header() {
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        menuRef.current && 
+        menuRef.current &&
         !menuRef.current.contains(event.target) &&
         !menuButtonRef.current.contains(event.target)
       ) {
@@ -24,7 +24,7 @@ function Header() {
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  },);
 
   const dropdownLinks = {
     home: [
@@ -37,13 +37,18 @@ function Header() {
     ],
   };
 
+  // Function to close the menu and navigate
+  const closeMenuAndNavigate = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="relative z-50 bg-[#0e1b36] text-white">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
           <div className="logo z-20">
-            <Link to="/">
+            <Link to="/" onClick={closeMenuAndNavigate}>
               <img
                 src="https://azim.commonsupport.com/Amortez/assets/images/logo-3.png"
                 alt="Amortez Logo"
@@ -171,17 +176,27 @@ function Header() {
       <div
         ref={menuRef}
         className={`lg:hidden absolute w-full bg-[#0e1b36] shadow-lg transition-all duration-300 ${
-          isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10 pointer-events-none"
+          isMenuOpen
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-10 pointer-events-none"
         }`}
       >
         <nav className="container mx-auto px-4 py-6">
           <ul className="space-y-4">
             <li className="border-b border-gray-700 pb-3">
               <div className="flex justify-between items-center">
-                <Link to="/" className="text-xl font-medium">
+                <Link
+                  to="/"
+                  className="text-xl font-medium"
+                  onClick={closeMenuAndNavigate} // Close menu on click
+                >
                   Home
                 </Link>
-                <button onClick={() => setHoveredLink(hoveredLink === "home" ? null : "home")}>
+                <button
+                  onClick={() =>
+                    setHoveredLink(hoveredLink === "home" ? null : "home")
+                  }
+                >
                   {hoveredLink === "home" ? "▲" : "▼"}
                 </button>
               </div>
@@ -189,10 +204,10 @@ function Header() {
                 <ul className="mt-3 pl-4 border-l-2 border-[#29ac4a]">
                   {dropdownLinks.home.map((link, index) => (
                     <li key={index}>
-                      <Link 
-                        to={link.path} 
+                      <Link
+                        to={link.path}
                         className="block py-2"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={closeMenuAndNavigate} // Close menu on click
                       >
                         {link.name}
                       </Link>
@@ -203,10 +218,10 @@ function Header() {
             </li>
 
             <li className="border-b border-gray-700 pb-3">
-              <Link 
-                to="/about" 
+              <Link
+                to="/about"
                 className="text-xl"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenuAndNavigate} // Close menu on click
               >
                 About
               </Link>
@@ -214,10 +229,20 @@ function Header() {
 
             <li className="border-b border-gray-700 pb-3">
               <div className="flex justify-between items-center">
-                <Link to="/projects" className="text-xl font-medium">
+                <Link
+                  to="/projects"
+                  className="text-xl font-medium"
+                  onClick={closeMenuAndNavigate} // Close menu on click
+                >
                   Projects
                 </Link>
-                <button onClick={() => setHoveredLink(hoveredLink === "projects" ? null : "projects")}>
+                <button
+                  onClick={() =>
+                    setHoveredLink(
+                      hoveredLink === "projects" ? null : "projects"
+                    )
+                  }
+                >
                   {hoveredLink === "projects" ? "▲" : "▼"}
                 </button>
               </div>
@@ -225,10 +250,10 @@ function Header() {
                 <ul className="mt-3 pl-4 border-l-2 border-[#29ac4a]">
                   {dropdownLinks.projects.map((link, index) => (
                     <li key={index}>
-                      <Link 
-                        to={link.path} 
+                      <Link
+                        to={link.path}
                         className="block py-2"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={closeMenuAndNavigate} // Close menu on click
                       >
                         {link.name}
                       </Link>
@@ -239,30 +264,30 @@ function Header() {
             </li>
 
             <li className="border-b border-gray-700 pb-3">
-              <Link 
-                to="/elements" 
+              <Link
+                to="/elements"
                 className="text-xl"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenuAndNavigate} // Close menu on click
               >
                 Elements
               </Link>
             </li>
 
             <li className="border-b border-gray-700 pb-3">
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
                 className="text-xl"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenuAndNavigate} // Close menu on click
               >
                 Blog
               </Link>
             </li>
 
             <li>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="text-xl"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenuAndNavigate} // Close menu on click
               >
                 Contact
               </Link>
