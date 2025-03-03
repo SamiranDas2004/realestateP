@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPhone, FaMapMarkerAlt, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { FaPhone, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 function Footer() {
@@ -16,22 +16,22 @@ function Footer() {
     <footer className="bg-[#222] text-white relative text-lg">
       {/* Subscription Section with Moving Background */}
       <motion.div
-        className="w-full py-8 px-4 z-10 text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5 overflow-hidden"
+        className="w-full py-8 px-4 z-10 text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5 overflow-hidden transition-transform duration-500"
         style={{
           top: '-20%',
         }}
       >
-        {/* Moving background - separate div for animation */}
+        {/* Moving background */}
         <motion.div
           className="absolute inset-0 z-0"
           style={{
             backgroundImage: `url(https://azim.commonsupport.com/Amortez/assets/images/shape/shape-10.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            width: '200%', // Extra width for continuous movement
+            width: '200%',
           }}
           animate={{
-            x: [-1000, 0], // Move from left to right (negative value moves it left)
+            x: [-1000, 0],
           }}
           transition={{
             x: {
@@ -115,9 +115,9 @@ function Footer() {
             <div className="grid grid-cols-3 gap-3">
               {galleryImages.map((image, index) => (
                 <div key={index} className="overflow-hidden rounded-lg">
-                  <motion.img 
-                    src={image} 
-                    alt={`Gallery ${index + 1}`} 
+                  <motion.img
+                    src={image}
+                    alt={`Gallery ${index + 1}`}
                     className="w-full h-24 object-cover rounded-lg hover:scale-110 transition-transform duration-500"
                     animate={{
                       scale: [1, 1.08, 1],
@@ -125,7 +125,7 @@ function Footer() {
                       translateX: [0, 3, 0]
                     }}
                     transition={{
-                      duration: 3 + (index * 0.5), // Different duration for each image
+                      duration: 3 + (index * 0.5),
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
@@ -137,10 +137,6 @@ function Footer() {
         </div>
       </div>
 
-      {/* Back to Top Button */}
-      <button className="absolute bottom-4 right-4 p-3 rounded-full bg-gray-700 hover:bg-gray-600 focus:outline-none">
-        <FaArrowUp />
-      </button>
     </footer>
   );
 }

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 function Award() {
   const floating = {
     y: {
-      y: [0, 15, 0], // Adjust the range to control the floating distance
+      y: [0, 15, 0], 
       transition: {
-        duration: 3, // Adjust the duration to control the floating speed
+        duration: 3, 
         ease: "easeInOut",
         repeat: Infinity,
         repeatType: "reverse",
@@ -31,11 +31,11 @@ function Award() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Award 1 */}
           <motion.div
-            variants={floating} // Apply the floating animation
-            animate="y" // Start the animation
+            variants={floating} 
+            animate="y" 
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="bg-white border border-gray-300 rounded-xl shadow-lg overflow-hidden"
+            className="bg-white border border-gray-300 rounded-xl shadow-lg" // Removed overflow-hidden
           >
             <img
               src="https://azim.commonsupport.com/Amortez/assets/images/resource/award-1.jpg"
@@ -54,11 +54,11 @@ function Award() {
 
           {/* Award 2 */}
           <motion.div
-            variants={floating} // Apply the floating animation
-            animate="y" // Start the animation
+            variants={floating}
+            animate="y"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="bg-white border border-gray-300 rounded-xl shadow-lg overflow-hidden"
+            className="bg-white border border-gray-300 rounded-xl shadow-lg" // Removed overflow-hidden
           >
             <img
               src="https://azim.commonsupport.com/Amortez/assets/images/resource/award-2.jpg"

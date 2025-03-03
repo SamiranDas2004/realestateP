@@ -7,6 +7,7 @@ import ViewServices from '../Projects/ViewServices';
 import OurTeam from '../Projects/OurTeam';
 import BlogPosts from '../Projects/Testimonials';
 import Banner from '../Projects/HeroSection';
+import Reviews from '../Projects/Reviews';
 
 function Project() {
   return (
@@ -16,6 +17,7 @@ function Project() {
         <LearnMore/>
         <Stats/>
         <Award/>
+        <Reviews/>
         <ViewServices/>
         <OurTeam/>
      <BlogPosts/>
