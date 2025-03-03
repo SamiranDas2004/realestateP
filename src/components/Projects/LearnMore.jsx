@@ -14,18 +14,18 @@ function LearnMore() {
   };
 
   return (
-    <div
-      className="bg-gray-50 py-16 px-4 md:px-8 lg:px-16 min-h-screen flex items-center relative"
-      style={{
-        backgroundImage: 'url(http://azim.commonsupport.com/Amortez/assets/images/shape/shape-1.png)',
-        backgroundPosition: 'right center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
-      }}
-    >
+    <div 
+    className="bg-gray-50 py-16 px-4 md:px-8 lg:px-16 relative overflow-hidden" // Added overflow-hidden here
+    style={{ 
+      backgroundImage: 'url(http://azim.commonsupport.com/Amortez/assets/images/shape/shape-1.png)',
+      backgroundPosition: 'right center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+    }}
+  >
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left Content Section */}
-        <motion.div 
+        <motion.div
           className="max-w-lg"
           animate={{ y: [0, -10, 0] }}
           transition={floatingAnimation.y}
@@ -52,7 +52,7 @@ function LearnMore() {
 
           {/* Features */}
           <div className="grid grid-cols-3 gap-4 mb-10">
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center text-center"
               animate={{ y: [0, -8, 0] }}
               transition={{
@@ -68,7 +68,7 @@ function LearnMore() {
               <span className="text-sm font-medium">Best Amenities</span>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center text-center"
               animate={{ y: [0, -8, 0] }}
               transition={{
@@ -85,7 +85,7 @@ function LearnMore() {
               <span className="text-sm font-medium">Gracious Living</span>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center text-center"
               animate={{ y: [0, -8, 0] }}
               transition={{
@@ -106,7 +106,7 @@ function LearnMore() {
           </div>
 
           {/* Learn More Button */}
-          <motion.button 
+          <motion.button
             className="bg-[#4564f3] hover:bg-blue-700 text-white py-3 px-8 rounded inline-flex items-center transition duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -121,11 +121,11 @@ function LearnMore() {
           <motion.div
             className="absolute -top-16 -right-16 w-64 h-64 bg-blue-50 opacity-20 z-0 rounded-full"
             initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               scale: [1, 1.1, 1],
             }}
-            transition={{ 
+            transition={{
               duration: 3,
               repeat: Infinity,
               repeatType: "reverse",
@@ -134,11 +134,11 @@ function LearnMore() {
           <motion.div
             className="relative z-10"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ 
-              opacity: 1, 
-              y: [0, -15, 0] 
+            animate={{
+              opacity: 1,
+              y: [0, -15, 0]
             }}
-            transition={{ 
+            transition={{
               y: {
                 duration: 3,
                 repeat: Infinity,
@@ -158,12 +158,12 @@ function LearnMore() {
           <motion.div
             className="absolute -bottom-12 -left-12 z-20"
             initial={{ opacity: 0, x: -50 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               x: 0,
-              y: [0, 12, 0] 
+              y: [0, 12, 0]
             }}
-            transition={{ 
+            transition={{
               opacity: { duration: 0.6, delay: 0.4 },
               x: { duration: 0.6, delay: 0.4 },
               y: {

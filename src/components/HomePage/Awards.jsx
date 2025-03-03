@@ -16,11 +16,11 @@ function AwardsSection() {
       <div className="container mx-auto text-center px-6">
         {/* Title Section */}
         <div className="mb-12">
-          <h2 className="text-6xl md:text-5xl font-bold mb-6 leading-snug text-gray-900">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 leading-snug text-gray-900"> {/* Added responsive text sizing */}
             Our Philosophy About <br />
             Real Estate Earned Us Awards
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600">
+          <p className="text-lg text-gray-600">
             Acknowledgments from trusted sources
           </p>
         </div>
@@ -32,9 +32,9 @@ function AwardsSection() {
               key={index}
               src={logo}
               alt={`Client Logo ${index + 1}`}
-              className="h-24 w-auto object-contain" // Increased icon size
+              className="h-20 w-auto object-contain"
               animate={{
-                y: [0, -10, 0], // Moves up and down
+                y: [0, -10, 0],
               }}
               transition={{
                 duration: 2,
@@ -47,7 +47,7 @@ function AwardsSection() {
 
         {/* Description Section */}
         <div className="w-full md:w-3/4 lg:w-2/3 mx-auto">
-          <p className="text-2xl md:text-2xl text-gray-700 leading-relaxed">
+          <p className="text-xl text-gray-700 leading-relaxed">
             Koluptate velit cillum doire fugiat nulla pariatur excepteur anim id est laborum. 
             Sed perspiciatis unde omnis iste natus voluptatem accusantium dolore mque lorem.
           </p>

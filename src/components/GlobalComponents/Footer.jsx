@@ -1,6 +1,5 @@
 import React from 'react';
-import { FaPhone, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { FaPhone, FaMapMarkerAlt, FaEnvelope, FaArrowUp } from 'react-icons/fa';
 
 function Footer() {
   const galleryImages = [
@@ -12,54 +11,19 @@ function Footer() {
     'https://azim.commonsupport.com/Amortez/assets/images/resource/footer-gallery-6.jpg',
   ];
 
-  const subscriptionVariants = {
-    initial: {
-      position: 'relative',
-      marginTop: 0, // Remove negative margin-top for mobile
-      top: 0,
-    },
-    animate: {
-      position: 'absolute',
-      marginTop: 0,
-      top: '-20%',
-    },
-  };
-
   return (
     <footer className="bg-[#222] text-white relative text-lg">
-      {/* Subscription Section with Moving Background */}
-      <motion.div
-        className="w-full py-8 px-4 z-10 text-lg md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5 overflow-hidden transition-transform duration-500"
-        variants={subscriptionVariants}
-        initial="initial"
-        animate="animate"
-        whileInView="animate"
-        viewport={{ once: true }}
+      {/* Subscription Section */}
+      <div
+        className="w-full py-8 px-4 z-10 text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5"
+        style={{
+          backgroundImage: `url(https://azim.commonsupport.com/Amortez/assets/images/shape/shape-10.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          top: '-20%',
+        }}
       >
-        {/* Moving background */}
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(https://azim.commonsupport.com/Amortez/assets/images/shape/shape-10.png)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            width: '200%',
-          }}
-          animate={{
-            x: [-1000, 0],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 10,
-              ease: "linear",
-            },
-          }}
-        />
-
-        {/* Content on top of moving background */}
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
           <h3 className="font-bold">Don't Miss Our Updates. Subscribe Now!</h3>
           <div className="flex w-full md:w-auto mt-4 md:mt-0">
             <input
@@ -72,10 +36,10 @@ function Footer() {
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto py-20 px-6 relative mt-0 md:mt-32 text-lg">
+      <div className="container mx-auto py-20 px-6 relative mt-0 md:mt-32 text-lg"> {/* Adjusted mt value for mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Amortez Section */}
           <div>
@@ -124,33 +88,26 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Our Gallery Section with Animated Images */}
+
+
+
+
+          {/* Our Gallery Section */}
           <div>
             <h3 className="font-bold text-xl mb-5">OUR GALLERY</h3>
             <div className="grid grid-cols-3 gap-3">
               {galleryImages.map((image, index) => (
-                <div key={index} className="overflow-hidden rounded-lg">
-                  <motion.img
-                    src={image}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-24 object-cover rounded-lg hover:scale-110 transition-transform duration-500"
-                    animate={{
-                      scale: [1, 1.08, 1],
-                      translateY: [0, -5, 0],
-                      translateX: [0, 3, 0]
-                    }}
-                    transition={{
-                      duration: 3 + (index * 0.5),
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </div>
+                <img key={index} src={image} alt={`Gallery ${index + 1}`} className="w-full h-24 object-cover rounded-lg" />
               ))}
             </div>
           </div>
         </div>
       </div>
+
+
+
+
+   
     </footer>
   );
 }

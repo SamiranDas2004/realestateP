@@ -5,11 +5,11 @@
     }
   
     .btn-primary {
-      @apply bg-[#3da561] text-white hover:bg-gray-700 hover:scale-105;
+      @apply bg-[#3da561] text-white hover:bg-[#4564f3] hover:scale-105;
     }
   
     .btn-secondary {
-      @apply bg-green-600 text-white hover:bg-green-500 hover:scale-105;
+      @apply bg-green-600 text-white hover:bg-[#4564f3] hover:scale-105;
     }
   
     .btn-outline {
