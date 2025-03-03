@@ -59,7 +59,8 @@ function BlogPosts() {
     <div className="bg-gray-100 py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-semibold text-center mb-8">Latest From Blog</h2>
-        <Slider {...settings}>
+        <div className="overflow-hidden"> {/* Added overflow-hidden */}
+          <Slider {...settings}>
           {posts.map((post, index) => (
             <div key={index} className="p-4">
               <div className="group bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
@@ -94,6 +95,7 @@ function BlogPosts() {
           ))}
         </Slider>
       </div>
+    </div>
     </div>
   );
 }
