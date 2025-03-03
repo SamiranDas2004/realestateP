@@ -12,14 +12,29 @@ function Footer() {
     'https://azim.commonsupport.com/Amortez/assets/images/resource/footer-gallery-6.jpg',
   ];
 
+  const subscriptionVariants = {
+    initial: {
+      position: 'relative',
+      marginTop: 0, // Remove negative margin-top for mobile
+      top: 0,
+    },
+    animate: {
+      position: 'absolute',
+      marginTop: 0,
+      top: '-20%',
+    },
+  };
+
   return (
     <footer className="bg-[#222] text-white relative text-lg">
       {/* Subscription Section with Moving Background */}
       <motion.div
-        className="w-full py-8 px-4 z-10 text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5 overflow-hidden transition-transform duration-500"
-        style={{
-          top: '-20%',
-        }}
+        className="w-full py-8 px-4 z-10 text-lg md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5 overflow-hidden transition-transform duration-500"
+        variants={subscriptionVariants}
+        initial="initial"
+        animate="animate"
+        whileInView="animate"
+        viewport={{ once: true }}
       >
         {/* Moving background */}
         <motion.div
@@ -136,7 +151,6 @@ function Footer() {
           </div>
         </div>
       </div>
-
     </footer>
   );
 }
