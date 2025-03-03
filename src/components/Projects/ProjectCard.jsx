@@ -69,16 +69,17 @@ function ProjectCards() {
       <Slider {...settings}>
         {projects.map((project) => (
           <div key={project.id} className="px-2">
-            <motion.div 
+            <motion.div
               className="relative overflow-hidden rounded-lg shadow-lg"
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="h-80 overflow-hidden">
-                <img
+                <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500"
+                  whileHover={{ scale: 1.1 }}
                 />
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-white p-6">

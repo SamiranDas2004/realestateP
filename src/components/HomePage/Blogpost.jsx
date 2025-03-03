@@ -38,23 +38,22 @@ function BlogPosts() {
   ];
 
   const settings = {
-    dots: false,            // Shows navigation dots
-    infinite: true,        // Enables infinite looping
-    speed: 500,           // Smooth transition speed
-    slidesToShow: 3,      // Displays 2 slides at a time on larger screens
-    slidesToScroll: 1,    // Moves 1 slide at a time
-    autoplay: true,       // Enables automatic scrolling
-    autoplaySpeed: 1200,  // Moves to the next slide every 2 seconds
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1200,
     responsive: [
       {
-        breakpoint: 768,  
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1, // Shows 1 slide at a time on smaller screens
+          slidesToShow: 1,
         },
       },
     ],
   };
-  
 
   return (
     <div className="bg-gray-100 py-16">
@@ -63,9 +62,17 @@ function BlogPosts() {
         <Slider {...settings}>
           {posts.map((post, index) => (
             <div key={index} className="p-4">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="relative">
-                  <img src={post.image} alt={post.title} className="w-full h-60 object-cover" />
+              <div className="group bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                <div className="relative overflow-hidden">
+                  {/* Image with Hover Zoom Effect */}
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {/* Green Transparent Overlay on Hover */}
+                  <div className="absolute top-0 left-0 w-full h-full bg-green-500/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Date Badge */}
                   <div className="absolute top-4 right-4 bg-gray-200 text-gray-700 px-3 py-1 rounded-md text-sm">
                     {post.date}
                   </div>

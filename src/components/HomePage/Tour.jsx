@@ -17,14 +17,14 @@ function Tour() {
       <div className="absolute inset-0 bg-[#0C2340] opacity-90"></div>
 
       <motion.div
-        className="relative flex flex-col md:flex-row items-center max-w-5xl w-full"
+        className="relative grid grid-cols-1 md:grid-cols-2 items-center max-w-6xl w-full gap-8" // Changed to grid
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
         {/* Left Section - Form */}
         <motion.div
-          className="bg-transparent text-white p-6 md:p-8 md:w-full md:w-1/2 rounded-lg"
+          className="bg-transparent text-white p-6 md:p-8 rounded-lg"
           whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.3 }}
         >
@@ -71,28 +71,59 @@ function Tour() {
           </form>
         </motion.div>
 
-        {/* Right Section - Floating Image */}
+        {/* Right Section - Floating Image with Diagonal Sweep Effect */}
         <motion.div
-          className="md:w-1/2 overflow-hidden mt-8 rounded-lg relative"
+          className="overflow-hidden mt-8 md:mt-0 rounded-lg relative"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <motion.img
-            src="https://azim.commonsupport.com/Amortez/assets/images/resource/contact-1.jpg"
-            alt="Building"
-            className="w-full h-full object-cover transition-transform duration-500 transform scale-100 hover:scale-105 shadow-lg rounded-lg"
-            whileHover={{ scale: 1.1 }}
-            animate={{
-              y: [0, -10, 0], // Floating effect
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
-            }}
-          />
+          <div className="relative overflow-hidden rounded-lg diagonal-shine">
+            <motion.img
+              src="https://azim.commonsupport.com/Amortez/assets/images/resource/contact-1.jpg"
+              alt="Building"
+              className="w-full h-full object-cover transition-transform duration-500 transform scale-100 hover:scale-105 shadow-lg rounded-lg"
+              // animate={{
+              //   y: [0, -5, 0], // Floating effect
+              // }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+
+          {/* CSS for the diagonal shine effect */}
+          <style jsx>{`
+            .diagonal-shine {
+              position: relative;
+            }
+            
+            .diagonal-shine::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 50%;
+              height: 100%;
+              background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+              );
+              transform: skewX(-25deg);
+              z-index: 1;
+              transition: none;
+            }
+            
+            .diagonal-shine:hover::before {
+              left: 125%;
+              transition: all 0.7s ease;
+            }
+          `}</style>
         </motion.div>
       </motion.div>
     </div>

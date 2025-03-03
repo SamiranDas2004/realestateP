@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaPhone, FaMapMarkerAlt, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 function Footer() {
   const galleryImages = [
@@ -13,17 +14,37 @@ function Footer() {
 
   return (
     <footer className="bg-[#222] text-white relative text-lg">
-      {/* Subscription Section */}
-      <div
-        className="w-full py-8 px-4 z-10 text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5"
+      {/* Subscription Section with Moving Background */}
+      <motion.div
+        className="w-full py-8 px-4 z-10 text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:w-4/5 overflow-hidden"
         style={{
-          backgroundImage: `url(https://azim.commonsupport.com/Amortez/assets/images/shape/shape-10.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           top: '-20%',
         }}
       >
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        {/* Moving background - separate div for animation */}
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(https://azim.commonsupport.com/Amortez/assets/images/shape/shape-10.png)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '200%', // Extra width for continuous movement
+          }}
+          animate={{
+            x: [-1000, 0], // Move from left to right (negative value moves it left)
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 10,
+              ease: "linear",
+            },
+          }}
+        />
+
+        {/* Content on top of moving background */}
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
           <h3 className="font-bold">Don't Miss Our Updates. Subscribe Now!</h3>
           <div className="flex w-full md:w-auto mt-4 md:mt-0">
             <input
@@ -36,10 +57,10 @@ function Footer() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto py-20 px-6 relative mt-0 md:mt-32 text-lg"> {/* Adjusted mt value for mobile */}
+      <div className="container mx-auto py-20 px-6 relative mt-0 md:mt-32 text-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Amortez Section */}
           <div>
@@ -88,26 +109,38 @@ function Footer() {
             </ul>
           </div>
 
-
-
-
-
-          {/* Our Gallery Section */}
+          {/* Our Gallery Section with Animated Images */}
           <div>
             <h3 className="font-bold text-xl mb-5">OUR GALLERY</h3>
             <div className="grid grid-cols-3 gap-3">
               {galleryImages.map((image, index) => (
-                <img key={index} src={image} alt={`Gallery ${index + 1}`} className="w-full h-24 object-cover rounded-lg" />
+                <div key={index} className="overflow-hidden rounded-lg">
+                  <motion.img 
+                    src={image} 
+                    alt={`Gallery ${index + 1}`} 
+                    className="w-full h-24 object-cover rounded-lg hover:scale-110 transition-transform duration-500"
+                    animate={{
+                      scale: [1, 1.08, 1],
+                      translateY: [0, -5, 0],
+                      translateX: [0, 3, 0]
+                    }}
+                    transition={{
+                      duration: 3 + (index * 0.5), // Different duration for each image
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
       </div>
 
-
-
-
-   
+      {/* Back to Top Button */}
+      <button className="absolute bottom-4 right-4 p-3 rounded-full bg-gray-700 hover:bg-gray-600 focus:outline-none">
+        <FaArrowUp />
+      </button>
     </footer>
   );
 }

@@ -6,7 +6,7 @@ import Info from '../HomePage/Info'
 // import TopHeader from './components/TopHeader'
 import HomePageCard from '../HomePage/HomePageCard'
 import Readmore from '../HomePage/Readmore'
-
+// import InteriorCarousel from '../HomePage/FeaturedProjects'
 import About from '../HomePage/About'
 import SmarterAmenities from '../HomePage/SmarterAmenities'
 import InteriorCarousel from '../HomePage/InteriorCarousel'
@@ -68,7 +68,7 @@ function Home() {
       <AwardsSection/>
       <Tour/>
       <BlogPosts/>
-      <Footer/>
+    
       {/* Scroll to top button */}
       {isScrolled && (
         <div className="fixed bottom-8 right-8 z-50">

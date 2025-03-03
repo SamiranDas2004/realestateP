@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 function HomePageCard() {
   const cards = [
     {
@@ -68,46 +72,63 @@ function HomePageCard() {
     },
   ];
 
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1200,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 p-8 mt-8">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40 z-0 p-5"
-        style={{
-          backgroundImage:
-            "url('https://azim.commonsupport.com/Amortez/assets/images/shape/shape-6.png')",
-        }}
-      />
+    <div className="relative p-8 mt-8">
+      <Slider {...settings}>
+        {cards.map((card, index) => (
+          <div key={index} className="p-2">
+            <motion.div
+              className="bg-white p-8 relative overflow-hidden z-10 transition-all duration-300 transform group rounded-lg m-2 shadow-sm" // added shadow-sm
+              initial={{ y: 0 }}
+              animate={{ y: [-5, 5, -5] }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+                delay: index * 0.3,
+              }}
+              whileHover={{ scale: 1.04, transition: { duration: 0.15 } }}
+              style={{
+                backgroundImage:
+                  "url('https://azim.commonsupport.com/Amortez/assets/images/shape/shape-6.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="mb-6 text-green-500">{card.icon}</div>
+              <h2 className="text-3xl font-bold mb-6">{card.title}</h2>
+              <hr className="w-4/5 border-gray-300 mb-6" />
+              <p className="text-gray-600 mb-8 text-lg">{card.description}</p>
 
-      {cards.map((card, index) => (
-        <motion.div
-          key={index}
-          className="bg-white p-8 shadow-2xl hover:shadow-[0px_15px_50px_rgba(0,0,0,0.25)] relative overflow-hidden z-10 transition-all duration-300 transform group rounded-lg"
-          initial={{ y: 0 }}
-          animate={{ y: [-5, 5, -5] }} // Floating effect
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
-            delay: index * 0.3, // Staggered effect
-          }}
-          whileHover={{ scale: 1.04, transition: { duration: 0.15 } }} // Subtle zoom effect
-        >
-          <div className="mb-6 text-green-500">{card.icon}</div>
-          <h2 className="text-3xl font-bold mb-6">{card.title}</h2>
-          <hr className="w-4/5 border-gray-300 mb-6" />
-          <p className="text-gray-600 mb-8 text-lg">{card.description}</p>
-
-          {/* Bottom right shape with hover effect */}
-          <div className="absolute bottom-0 right-0 transition-colors duration-300 text-green-500 group-hover:text-[#122243]">
-            <svg className="w-8 h-8" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M0,0 L24,0 L24,24 L0,24 Z" fillOpacity="0" />
-              <path fill="currentColor" d="M0,24 L24,24 L24,0 Z" />
-            </svg>
+              <div className="absolute bottom-0 right-0 transition-colors duration-300 text-green-500 group-hover:text-[#122243]">
+                <svg className="w-8 h-8" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M0,0 L24,0 L24,24 L0,24 Z" fillOpacity="0" />
+                  <path fill="currentColor" d="M0,24 L24,24 L24,0 Z" />
+                </svg>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
-      ))}
+        ))}
+      </Slider>
     </div>
   );
 }

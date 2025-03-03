@@ -97,7 +97,7 @@ function Info() {
                   {totalConstructions}
                   <span className="text-green-500 text-6xl">+</span>
                 </motion.h3>
-                <p className="text-xl">Total Constructions</p>
+                <p className="text-l">Total Constructions</p>
               </div>
 
               <div className="text-center">
@@ -108,7 +108,7 @@ function Info() {
                   {totalAmenities}
                   <span className="text-green-500 text-6xl">+</span>
                 </motion.h3>
-                <p className="text-xl">Total Amenities</p>
+                <p className="text-l">Total Amenities</p>
               </div>
 
               <div className="text-center">
@@ -119,7 +119,7 @@ function Info() {
                   {apartmentsSold}
                   <span className="text-green-500 text-6xl">+</span>
                 </motion.h3>
-                <p className="text-xl">Apartments Sold</p>
+                <p className="text-l">Apartments Sold</p>
               </div>
             </div>
           </div>
