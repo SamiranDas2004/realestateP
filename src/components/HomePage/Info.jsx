@@ -29,7 +29,7 @@ function Info() {
   };
 
   return (
-    <div className="relative w-full py-20 bg-[#0e1b36] text-white overflow-hidden">
+    <div className="relative w-full pb-20 bg-[#0e1b36] text-white overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
@@ -78,47 +78,50 @@ function Info() {
               Excepteur anim laborum. Sed ut perspiciatis und omnis iste natus
               eror sit holuptatem ipsum accusantium dolor mque laudantium.
             </p>
-
-            <div className="flex justify-between mt-8 w-full">
-  <div className="w-1/3 text-center">
-    <motion.h3
-      className="text-7xl font-bold text-green-500 mb-4"
-      animate={floatAnimation}
-    >
-      {totalConstructions}
-      <span className="text-green-500 text-6xl">+</span>
-    </motion.h3>
-    <p className="text-l">Total Constructions</p>
-  </div>
-
-  <div className="w-1/3 text-center">
-    <motion.h3
-      className="text-7xl font-bold text-green-500 mb-4"
-      animate={floatAnimation}
-    >
-      {totalAmenities}
-      <span className="text-green-500 text-6xl">+</span>
-    </motion.h3>
-    <p className="text-l">Total Amenities</p>
-  </div>
-
-  <div className="w-1/3 text-center">
-    <motion.h3
-      className="text-7xl font-bold text-green-500 mb-4"
-      animate={floatAnimation}
-    >
-      {apartmentsSold}
-      <span className="text-green-500 text-6xl">+</span>
-    </motion.h3>
-    <p className="text-l">Apartments Sold</p>
-  </div>
-</div>
-
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-2/4 h-1/5 bg-white z-20 clip-45 hidden md:block"></div>
 
+      {/* Numbers section - Aligned to the right */}
+   {/* Numbers section - Aligned in a row */}
+{/* Numbers section - Aligned to the right side */}
+<div className="container mx-auto px-6 relative z-70 flex justify-end">
+  <div className="w-full md:w-1/2 flex flex-wrap justify-between items-center text-green-500">
+    <div className="flex flex-col items-center mx-4">
+      <motion.h3 className="text-7xl font-bold mb-2" animate={floatAnimation}>
+        {totalConstructions}
+        <span className="text-6xl">+</span>
+      </motion.h3>
+      <p className="text-lg text-white">Total Constructions</p>
+    </div>
+
+    <div className="flex flex-col items-center mx-4">
+      <motion.h3 className="text-7xl font-bold mb-2" animate={floatAnimation}>
+        {totalAmenities}
+        <span className="text-6xl">+</span>
+      </motion.h3>
+      <p className="text-lg text-white">Total Amenities</p>
+    </div>
+
+    <div className="flex flex-col items-center mx-4">
+      <motion.h3 className="text-7xl font-bold mb-2" animate={floatAnimation}>
+        {apartmentsSold}
+        <span className="text-6xl">+</span>
+      </motion.h3>
+      <p className="text-lg text-white">Apartments Sold</p>
+    </div>
+  </div>
+</div>
+
+
+
+      {/* Diagonal cut white section */}
+      <div
+        className="absolute bottom-0 left-0 w-2/4 h-2/8 bg-white z-10 hidden md:block"
+        style={{
+          clipPath: "polygon(0 0, 94% 0, 85% 100%, 0 100%)",
+        }}
+      ></div>
     </div>
   );
 }

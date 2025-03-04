@@ -17,7 +17,7 @@ function About() {
       {/* Content Wrapper */}
       <div className="relative z-10 flex flex-col items-center w-full max-w-6xl px-4 sm:px-6 py-12">
         {/* Content Box - Shifted Left */}
-        <div className="bg-white text-gray-900 p-5 sm:p-10 shadow-2xl w-full max-w-3xl text-left transform transition-all hover:scale-105 duration-500 ease-in-out ml-auto mr-auto sm:mr-auto sm:ml-10 flex flex-col justify-between mb-12 sm:mb-0">
+        <div className="bg-white text-gray-900 p-5 sm:p-10 shadow-2xl w-full max-w-3xl text-left transform transition-all hover:scale-105 duration-500 ease-in-out ml-auto mr-auto sm:mr-auto sm:ml-10 flex flex-col justify-between mb-[-15%] sm:mb-[-20%]">
           {/* Logo */}
           <div className="mb-4 flex justify-center">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#3da561] rounded-full flex items-center justify-center shadow-md">
@@ -66,7 +66,7 @@ function About() {
         </div>
 
         {/* Mobile Play Button (More spacing on small screens) */}
-        <div className="md:hidden flex flex-col items-center text-white mt-8">
+        <div className="md:hidden flex flex-col items-center text-white mt-20">
           <div className="relative floating-button">
             {/* Ripple Effect */}
             <div className="absolute inset-0 flex justify-center items-center">
